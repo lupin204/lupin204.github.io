@@ -16,7 +16,5 @@
     "url": "https://github.com/lupin204/lupin204.github.io/issues"
   },
   "homepage": "https://github.com/lupin204/lupin204.github.io#readme",
-  "dependencies": {
-    "hexo-cli": "^1.1.0"
-  }
+  "dependencies": {}
 }

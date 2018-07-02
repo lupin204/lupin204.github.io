@@ -1,0 +1,83 @@
+
+>**`pc 체크 - navigator.platform`**<br>
+< PC H/W os Info > <br>
+Win16 : win os based 16bit<br>
+Win32 : win os based 32bit<br>
+win64 : win os based 64bit<br>
+MacIntel : Mac os with Intel CPU<br>
+Mac : Mac os<br>
+
+
+>**`Third-Party in-app-browser userAgent (iOS 10.1 기준)`**<br>
+Google Chrome<br>
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/54.0.2840.91 Mobile/14B100 Safari/602.1<br><br>
+Facebook in-app<br>
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML, like Gecko) Mobile/14B100 [FBAN/FBIOS;FBAV/72.0.0.40.71;FBBV/43917395;FBRV/0;FBDV/iPhone7,2;FBMD/iPhone;FBSN/iOS;FBSV/10.1.1;FBSS/2;FBCR/KT;FBID/phone;FBLC/ko_KR;FBOP/5]<br><br>
+Naver in-app<br>
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML, like Gecko) Mobile/14B100 NAVER(inapp; search; 550; 7.5.2.6; 6)<br><br>
+Daum in-app<br>
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML, like Gecko) Mobile/14B100 DaumApps/6.4.1 DaumDevice/mobile<br><br>
+KakaoTalk in-app<br>
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML, like Gecko) Mobile/14B100 KAKAOTALK 5.9.5<br><br>
+Twitter in-app<br>
+same as safari  (generic Web View with no identifiable properties.)  -> userAgent 로 구분 불가<br>
+
+
+```javascript
+// 2018-05-01 Android 7.0 Nougat (Galaxy S7) 기준
+var user_agent = navigator.userAgent;
+if (user_agent.indexOf('NAVER') > -1) {
+    console.log('Naver in-app');
+} else if (user_agent.indexOf('DaumApps') > -1 || user_agent.indexOf('DaumDevice') > -1) {
+    console.log('Daum in-app');
+} else if (user_agent.indexOf('FBAV') > -1 || user_agent.indexOf('FBAN') > -1) {
+    console.log('Facebook app');
+} else if (user_agent.indexOf('KAKAOTALK') -1) {
+    console.log('KakaoTalk app');
+}
+```
+
+
+
+https://deviceatlas.com/blog/mobile-browser-user-agent-strings
+
+List of mobile browsers User-Agent strings
+
+Safari for iOS
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1
+Android Browser
+Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30
+Chrome Mobile
+Mozilla/5.0 (Linux; Android 7.0; SM-G930V Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.125 Mobile Safari/537.36
+Opera Mobile (Blink rendering engine)
+Mozilla/5.0 (Linux; Android 7.0; SM-A310F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36 OPR/42.7.2246.114996
+Opera Mobile (Presto rendering engine)
+Opera/9.80 (Android 4.1.2; Linux; Opera Mobi/ADR-1305251841) Presto/2.11.355 Version/12.10
+Opera Mini
+Opera/9.80 (J2ME/MIDP; Opera Mini/5.1.21214/28.2725; U; ru) Presto/2.8.119 Version/11.10
+Opera Mini (iOS WebKit)
+Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) OPiOS/10.2.0.93022 Mobile/11D257 Safari/9537.53
+Firefox for Android
+Mozilla/5.0 (Android 7.0; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0
+Firefox for iOS
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) FxiOS/7.5b3349 Mobile/14F89 Safari/603.2.4
+UC Browser
+Mozilla/5.0 (Linux; U; Android 7.0; en-US; SM-G935F Build/NRD90M) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/11.3.8.976 U3/0.8.0 Mobile Safari/534.30"
+Dolphin
+Mozilla/5.0 (Linux; Android 6.0.1; SM-G920V Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mobile Safari/537.36
+Puffin for Android
+Mozilla/5.0 (Linux; Android 5.1.1; SM-N750K Build/LMY47X; ko-kr) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Puffin/6.0.8.15804AP
+Puffin for iOS
+Mozilla/5.0 (Linux; Android 5.1.1; SM-N750K Build/LMY47X; ko-kr) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Puffin/6.0.8.15804AP
+Samsung Browser
+Mozilla/5.0 (Linux; Android 7.0; SAMSUNG SM-G955U Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/5.4 Chrome/51.0.2704.106 Mobile Safari/537.36
+Yandex Browser
+Mozilla/5.0 (Linux; Android 6.0; Lenovo K50a40 Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.137 YaBrowser/17.4.1.352.00 Mobile Safari/537.36
+MIUI Browser
+Mozilla/5.0 (Linux; U; Android 7.0; en-us; MI 5 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.0.3
+IE Mobile
+Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; Microsoft; Lumia 950)
+Edge Mobile
+Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Mobile Safari/537.36 Edge/15.14977
+BlackBerry Browser
+Mozilla/5.0 (BB10; Kbd) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.3.3.2205 Mobile Safari/537.35+
