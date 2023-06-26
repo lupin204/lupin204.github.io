@@ -61,19 +61,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2022/01/10/JPA/native-query/</url>
-    <content><![CDATA[<h1 id="native-query"><a href="#native-query" class="headerlink" title="native query"></a>native query</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// UserEntity : 기본이 되는 Entity테이블 -&gt; 안쓰는 테이블 써도 돌아감</span></span><br><span class="line"><span class="comment">// Long : UserEntity의 Pk 컬럼 타입</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepo</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">UserEntity</span>&gt;, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Query(value = &quot;SELECT USER_NM as userNm, USER_ID as userId, USER_AGE as userAge FROM USER WHERE USER_TP = :userType&quot;, nativeQuery = true )</span></span><br><span class="line">  <span class="function">List&lt;UserDTO&gt; <span class="title">selectUserList</span><span class="params">(<span class="meta">@Param(&quot;userType&quot;)</span> String userType)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Query(value = &quot;SELECT USER_NM as userNm, USER_ID as userId, USER_AGE as userAge FROM USER WHERE USER_ID in :userIdList&quot;, nativeQuery = true )</span></span><br><span class="line">  <span class="function">List&lt;UserDTO&gt; <span class="title">selectUserMultiList</span><span class="params">(<span class="meta">@Param(&quot;userIdList&quot;)</span> List&lt;String&gt; userIdList)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 트릭으로 Dynamic Query 생성하는법</span></span><br><span class="line">  <span class="comment">// --&gt;&gt;  userIdList == NULL 전체 조회 | userIdList != NULL 조건 ID만 조회</span></span><br><span class="line">  <span class="meta">@Query(value = &quot;SELECT USER_NM as userNm, USER_ID as userId, USER_AGE as userAge FROM USER </span></span><br><span class="line"><span class="meta">  WHERE 1=1</span></span><br><span class="line"><span class="meta">  AND ( :userIdList is null or USER_ID in :userIdList )&quot;, nativeQuery = true )</span></span><br><span class="line">  <span class="function">List&lt;UserDTO&gt; <span class="title">selectFilteredUserList</span><span class="params">(<span class="meta">@Param(&quot;userIdList&quot;)</span> List&lt;String&gt; userIdList)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>interface 생성하면 </p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">String <span class="title">getUserId</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">String <span class="title">getUserNm</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">Integer <span class="title">getUserAge</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-  </entry>
-  <entry>
     <title>crypto RSA</title>
     <url>/2022/01/10/java/crypto-RSA/</url>
     <content><![CDATA[<h1 id="java8-lambda"><a href="#java8-lambda" class="headerlink" title="java8 lambda"></a>java8 lambda</h1><ul>
@@ -111,6 +98,19 @@
         <tag>crypto</tag>
         <tag>RSA</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/01/10/JPA/native-query/</url>
+    <content><![CDATA[<h1 id="native-query"><a href="#native-query" class="headerlink" title="native query"></a>native query</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// UserEntity : 기본이 되는 Entity테이블 -&gt; 안쓰는 테이블 써도 돌아감</span></span><br><span class="line"><span class="comment">// Long : UserEntity의 Pk 컬럼 타입</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepo</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">UserEntity</span>&gt;, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Query(value = &quot;SELECT USER_NM as userNm, USER_ID as userId, USER_AGE as userAge FROM USER WHERE USER_TP = :userType&quot;, nativeQuery = true )</span></span><br><span class="line">  <span class="function">List&lt;UserDTO&gt; <span class="title">selectUserList</span><span class="params">(<span class="meta">@Param(&quot;userType&quot;)</span> String userType)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Query(value = &quot;SELECT USER_NM as userNm, USER_ID as userId, USER_AGE as userAge FROM USER WHERE USER_ID in :userIdList&quot;, nativeQuery = true )</span></span><br><span class="line">  <span class="function">List&lt;UserDTO&gt; <span class="title">selectUserMultiList</span><span class="params">(<span class="meta">@Param(&quot;userIdList&quot;)</span> List&lt;String&gt; userIdList)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 트릭으로 Dynamic Query 생성하는법</span></span><br><span class="line">  <span class="comment">// --&gt;&gt;  userIdList == NULL 전체 조회 | userIdList != NULL 조건 ID만 조회</span></span><br><span class="line">  <span class="meta">@Query(value = &quot;SELECT USER_NM as userNm, USER_ID as userId, USER_AGE as userAge FROM USER </span></span><br><span class="line"><span class="meta">  WHERE 1=1</span></span><br><span class="line"><span class="meta">  AND ( :userIdList is null or USER_ID in :userIdList )&quot;, nativeQuery = true )</span></span><br><span class="line">  <span class="function">List&lt;UserDTO&gt; <span class="title">selectFilteredUserList</span><span class="params">(<span class="meta">@Param(&quot;userIdList&quot;)</span> List&lt;String&gt; userIdList)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>interface 생성하면 </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDTO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">String <span class="title">getUserId</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">String <span class="title">getUserNm</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">Integer <span class="title">getUserAge</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
   </entry>
   <entry>
     <title>java8 lambda</title>
@@ -171,64 +171,6 @@
       <tags>
         <tag>jpa</tag>
         <tag>querydsl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>이상우1</title>
-    <url>/2022/01/27/asset/apt/lsw1/</url>
-    <content><![CDATA[<h1 id="이상우1-정리"><a href="#이상우1-정리" class="headerlink" title="이상우1 정리"></a>이상우1 정리</h1><h2 id="여기에유튜브제목을쓸꺼임"><a href="#여기에유튜브제목을쓸꺼임" class="headerlink" title="여기에유튜브제목을쓸꺼임"></a><a href="https://youtube.com/">여기에유튜브제목을쓸꺼임</a></h2><h2 id="2022-01-22-빌사남"><a href="#2022-01-22-빌사남" class="headerlink" title="2022.01.22 - 빌사남"></a>2022.01.22 - 빌사남</h2><h3 id="부동산-전망"><a href="#부동산-전망" class="headerlink" title="부동산 전망"></a>부동산 전망</h3><ul>
-<li><p>2022년 &#x2F; 서울 &#x2F; 10% &#x2F; 평균 12억7천 -&gt; 평균 14억</p>
-</li>
-<li><p>&#x3D;&#x3D;&gt; 15억 육박 &#x3D;&#x3D;&gt; 올해말 즈음 서울 아파트는 대부분 대출이 안나옴(15억상한)</p>
-</li>
-<li><p>&#x3D;&#x3D;&gt; 대출 상한이 새 정부에서 2022년말 바뀔 가능성 ㅇ</p>
-</li>
-<li><p>경기도 &#x2F; 기타 : 5 ~ 10% 사이</p>
-</li>
-<li><p>2022년 또 오르는 이유는?</p>
-<ol>
-<li>돈많은 사람이 많음 - 100억대</li>
-<li>돈 많이 번 사람들이 사고싶어하는 집들이 많이 오름</li>
-</ol>
-<ul>
-<li>신축 &#x2F; 인기지역</li>
-</ul>
-</li>
-<li><p>filter</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;UserVo&gt; userList = list.stream().filter(e -&gt; e.getUserAge &gt; <span class="number">40</span> &amp;&amp; e.getTeamName.equals(<span class="string">&quot;NC&quot;</span>)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h1><ul>
-<li><p>removeIf</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// team 이름이 NC 인것 제외</span></span><br><span class="line">voList.removeIf(e -&gt; e.getTeamName().equals(<span class="string">&quot;NC&quot;</span>));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Collections.sort()</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// orderDate 시간 순으로 sort</span></span><br><span class="line">Collections.sort(filteredList, (o1, o2) -&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (o1.getOrderDate().after(o2.getOrderDate())) &#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (o1.getOrderDate().before(o2.getOrderDate())) &#123; <span class="keyword">return</span> -<span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; itemScoreList = Arrays.asList(<span class="number">50</span>, <span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">Collections.sort(itemScoreList);</span><br></pre></td></tr></table></figure></li>
-<li><p>ArrayList.sort()</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;ItemVo&gt; itemList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">itemList.sort((o1, o2) -&gt; &#123;</span><br><span class="line">  String item1 = o1.getItemName();</span><br><span class="line">  String item2 = o2.getItemName();</span><br><span class="line">  <span class="keyword">return</span> item1.compareTo(item2);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker login</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker 이미지 리스트 : mysql 버전별 목록 확인</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker에 mysql 설치</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull mysql                &lt;-- 최신버전</span><br><span class="line">docker pull mysql:8.0.17         &lt;-- 8점대 버전</span><br><span class="line">docker pull mysql:5.7            &lt;-- 5점대 버전</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>mysql 서버 시작</p>
-<blockquote>
-<p>port: 3306<br>id: root<br>pw: password</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --name jmlim-mysql -v /Users/jmlim/datadir:/var/lib/mysql mysql:8.0.17</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>asset</category>
-      </categories>
-      <tags>
-        <tag>이상우</tag>
-        <tag>asset</tag>
-        <tag>real estate</tag>
       </tags>
   </entry>
   <entry>

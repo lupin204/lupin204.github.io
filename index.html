@@ -188,118 +188,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/27/asset/apt/lsw1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="lupin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lupin Pages">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/27/asset/apt/lsw1/" class="post-title-link" itemprop="url">이상우1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-01-27 14:21:39 / Modified: 17:39:48" itemprop="dateCreated datePublished" datetime="2022-01-27T14:21:39+09:00">2022-01-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/asset/" itemprop="url" rel="index"><span itemprop="name">asset</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="이상우1-정리"><a href="#이상우1-정리" class="headerlink" title="이상우1 정리"></a>이상우1 정리</h1><h2 id="여기에유튜브제목을쓸꺼임"><a href="#여기에유튜브제목을쓸꺼임" class="headerlink" title="여기에유튜브제목을쓸꺼임"></a><a target="_blank" rel="noopener" href="https://youtube.com/">여기에유튜브제목을쓸꺼임</a></h2><h2 id="2022-01-22-빌사남"><a href="#2022-01-22-빌사남" class="headerlink" title="2022.01.22 - 빌사남"></a>2022.01.22 - 빌사남</h2><h3 id="부동산-전망"><a href="#부동산-전망" class="headerlink" title="부동산 전망"></a>부동산 전망</h3><ul>
-<li><p>2022년 &#x2F; 서울 &#x2F; 10% &#x2F; 평균 12억7천 -&gt; 평균 14억</p>
-</li>
-<li><p>&#x3D;&#x3D;&gt; 15억 육박 &#x3D;&#x3D;&gt; 올해말 즈음 서울 아파트는 대부분 대출이 안나옴(15억상한)</p>
-</li>
-<li><p>&#x3D;&#x3D;&gt; 대출 상한이 새 정부에서 2022년말 바뀔 가능성 ㅇ</p>
-</li>
-<li><p>경기도 &#x2F; 기타 : 5 ~ 10% 사이</p>
-</li>
-<li><p>2022년 또 오르는 이유는?</p>
-<ol>
-<li>돈많은 사람이 많음 - 100억대</li>
-<li>돈 많이 번 사람들이 사고싶어하는 집들이 많이 오름</li>
-</ol>
-<ul>
-<li>신축 &#x2F; 인기지역</li>
-</ul>
-</li>
-<li><p>filter</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;UserVo&gt; userList = list.stream().filter(e -&gt; e.getUserAge &gt; <span class="number">40</span> &amp;&amp; e.getTeamName.equals(<span class="string">&quot;NC&quot;</span>)).collect(Collectors.toList());</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h1><ul>
-<li><p>removeIf</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// team 이름이 NC 인것 제외</span></span><br><span class="line">voList.removeIf(e -&gt; e.getTeamName().equals(<span class="string">&quot;NC&quot;</span>));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Collections.sort()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// orderDate 시간 순으로 sort</span></span><br><span class="line">Collections.sort(filteredList, (o1, o2) -&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (o1.getOrderDate().after(o2.getOrderDate())) &#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (o1.getOrderDate().before(o2.getOrderDate())) &#123; <span class="keyword">return</span> -<span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">List&lt;Integer&gt; itemScoreList = Arrays.asList(<span class="number">50</span>, <span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">Collections.sort(itemScoreList);</span><br></pre></td></tr></table></figure></li>
-<li><p>ArrayList.sort()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;ItemVo&gt; itemList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">itemList.sort((o1, o2) -&gt; &#123;</span><br><span class="line">  String item1 = o1.getItemName();</span><br><span class="line">  String item2 = o2.getItemName();</span><br><span class="line">  <span class="keyword">return</span> item1.compareTo(item2);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker login</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker 이미지 리스트 : mysql 버전별 목록 확인</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docker에 mysql 설치</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql                &lt;-- 최신버전</span><br><span class="line">docker pull mysql:8.0.17         &lt;-- 8점대 버전</span><br><span class="line">docker pull mysql:5.7            &lt;-- 5점대 버전</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>mysql 서버 시작</p>
-<blockquote>
-<p>port: 3306<br>id: root<br>pw: password</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --name jmlim-mysql -v /Users/jmlim/datadir:/var/lib/mysql mysql:8.0.17</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/10/java/crypto-RSA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -942,20 +830,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
